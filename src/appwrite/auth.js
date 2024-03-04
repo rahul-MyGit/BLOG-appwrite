@@ -13,9 +13,9 @@ export class AuthService{
             .setProject(conf.appwriteProjectId);
 
         this.account = new Account(this.client)
-
+            
     }
-    
+
     async createAccount({email, password, name}){
         // eslint-disable-next-line no-useless-catch
         try{
@@ -23,9 +23,9 @@ export class AuthService{
             if (userAccount) {
                 //call another method : if account created successfully then make them login
                 return this.login({email,password})
-                
+
             } else {
-                return userAccount;
+               return userAccount;
             }
         }catch(err){
             throw err;
@@ -63,5 +63,5 @@ export class AuthService{
 }
 
 
-const authService = new AuthService;
+const authService = new AuthService();
 export default authService

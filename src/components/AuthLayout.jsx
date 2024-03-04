@@ -10,8 +10,17 @@ export default function Protected({children, authentication = true}) {
     const [loader, setLoader] = useState(true)
     const authStatus = useSelector(state => state.auth.status)
 
-    useEffect(()=>{
-        //TODO: make it more easy and use only authstatus to check permission
+    useEffect(() => {
+        //TODO: make it more easy to understand
+
+        // if (authStatus ===true){
+        //     navigate("/")
+        // } else if (authStatus === false) {
+        //     navigate("/login")
+        // }
+        
+        //let authValue = authStatus === true ? true : false
+
         if(authentication && authStatus !== authentication){
             navigate('/login')
         }else if(!authentication && authStatus !== authentication){

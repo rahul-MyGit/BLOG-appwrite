@@ -6,11 +6,11 @@ export class Service{
     client = new Client()
     databases;
     bucket;
-
+    
     constructor(){
         this.client
-            .setEndpoint(conf.appwriteUrl)
-            .setProject(conf.appwriteProjectId);
+        .setEndpoint(conf.appwriteUrl)
+        .setProject(conf.appwriteProjectId);
 
         this.databases = new Databases(this.client);
         this.bucket = new Storage(this.client);
@@ -52,12 +52,12 @@ export class Service{
             )
         } catch (error) {
             console.log("Appwrite service :: updatePost :: error,",error);
-            
+
         }
     }
 
 
-    async daletePost(slug){
+    async deletePost(slug){
         try {
             await this.databases.deleteDocument(
                 conf.appwriteDatabaseId,
@@ -79,23 +79,23 @@ export class Service{
                 conf.appwriteCollectionId,
                 slug
             )
-            
+
         } catch (error) {
             console.log("Appwrite service :: getPost :: error,", error);
+            return false
         }
     }
 
     // If I choose to get all post then I'll get those post whose status is "NOTACTIVE"
     // So we have to use query
-
     async getPosts(queries = [Query.equal("status", "active")]){       //queries is just a variable
         
         try {
             return await this.databases.listDocuments(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                queries,
-                
+                queries, 
+
             )
         } catch (error) {
             console.log("Appwrite service :: getPosts :: error,", error);
@@ -113,7 +113,7 @@ export class Service{
             return await this.bucket.createFile(
                 conf.appwriteBucketId,
                 ID.unique(),
-                file,
+                file
             )
         } catch (error) {
             console.log("Appwrite service :: uploadFile :: error,", error);

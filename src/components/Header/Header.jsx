@@ -13,48 +13,48 @@ function Header() {
 
   const navItems = [
     {
-      name: "Home",
+      name: 'Home',
       slug: "/",
       active: true
     },{
       name: "Login",
       slug: "/login",
-      active: !authStatus        //if user is logged in then not show these
-    },{
+      active: !authStatus,        //if user is logged in then not show these
+  },{
       name: "Signup",
       slug: "/signup",
-      active: !authStatus
-    },{
+      active: !authStatus,
+  },{
       name: "All Posts",
       slug: "/all-posts",
-      active: authStatus
-    },{
+      active: authStatus,
+  },{
       name: "Add Post",
       slug: "/add-post",
-      active: authStatus
-    },
+      active: authStatus,
+  },
   ]
 
 
   return (
-    <header className='y-3 shadow bg-gray-500'>
+    <header className='py-3 shadow bg-gray-500'>
       <Container>
         <nav className='flex'>
           <div className='mr-4'>
-          <Link to= '/'>
-            <Logo width='70px' />
-          </Link>
+            <Link to= '/'>
+              <Logo width='70px' />
+              </Link>
           </div>
-
+          
           <ul className='flex ml-auto'>
             {navItems.map((item)=> 
-            item.active ? (       
+            item.active ? (
               //html element that is repeating, only there use keys
               <li key={item.name}>
                 <button onClick={() => navigate(item.slug)}      //use navigate to redirect
                 className='inline-block px-6 py-2 duration-200 hover:bg-blue-100 rounded-full'
-                >{item.name}</button>    
-              </li>         
+                >{item.name}</button>
+              </li>
             ) : null
             )}
 
@@ -67,8 +67,8 @@ function Header() {
           </ul>
         </nav>
 
-      </Container>
-
+        </Container>
+        
     </header>
   )
 }
