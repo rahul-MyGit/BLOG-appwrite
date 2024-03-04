@@ -3,7 +3,6 @@ logs
 *.log
 npm-debug.log*
 
-node-modules
 dist
 dist-ssr
 *.local
@@ -18,3 +17,4 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+node_modules
